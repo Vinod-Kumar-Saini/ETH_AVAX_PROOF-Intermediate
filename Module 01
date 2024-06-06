@@ -1,0 +1,24 @@
+ //SPDX-License-Identifier: MIT
+
+pragma solidity ^ 0.8.26;
+
+contract errors{
+
+    //we have initial balance =0
+    uint public balance = 0;
+    function withdraw(uint amount) public {
+        require(balance > amount, "Not sufficient balance ");
+      balance = balance-amount;
+    }
+    function deposite(uint amount) public {
+        balance =balance+ amount;
+        if(balance > 400){
+            revert("Balance is exceeding the limit");
+        }
+    }
+
+function zero() public view returns (string memory){
+    assert(balance ==0);
+    return "No money for the transaction";
+}
+}
